@@ -1,4 +1,4 @@
---single function
+-- single function
 desc dual
 select * from dual; --가짜 테이블
 

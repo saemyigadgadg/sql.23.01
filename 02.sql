@@ -171,6 +171,10 @@ where commission_pct is not null;
 
 select last_name, salary
 from employees
+where manager_id is null and (salary >= 20000);
+
+select last_name, salary
+from employees
 where not (manager_id is null and salary >= 20000);
 
 -- 과제: 직업이 영업이다. 그리고, 월급이 $2500, $3500 가 아니다.
