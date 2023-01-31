@@ -105,19 +105,19 @@ aid number(1) constraint a_aid_pk primary key);
 create table b (
 bid number(2),
 aid number(1),
-constraint b_aid_fik foreign key(aid) references a(aid));
+constraint b_aid_fk foreign key(aid) references a(aid));
 
 insert into a values(1);
 insert into b values(31, 1);
 insert into b values(32, 9); -- 복사된 값이 아니기 때문에 부모키가 발견되지 않아 오류가 발생한다.
 
 --foreign key를 재우는 방법
-alter table b disable constraint b_aid_fik; -- 이름 fk인데 잘못 씀
+alter table b disable constraint b_aid_fk;
 -- 해당 명령문 후 111행을 실행해보면 잘 작동한다.
 
-alter table b enable constraint b_aid_fik; 
+alter table b enable constraint b_aid_fk; 
 -- 이미 111테이블에 9 라는 키가 적용되었기 때문에 검사시 부모테이블이 보이지 않아 오류가 발생한다.
-alter table b enable novalidate constraint b_aid_fik;
+alter table b enable novalidate constraint b_aid_fk;
 
 insert into b values(33, 8);
 
